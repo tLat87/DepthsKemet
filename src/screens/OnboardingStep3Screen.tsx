@@ -9,7 +9,7 @@ const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 const OnboardingStep3Screen: React.FC = () => {
   const navigation = useAppNavigation();
   const { vibrateShort } = useVibration();
-  
+
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(50)).current;
   const logoScale = useRef(new Animated.Value(0.8)).current;
@@ -66,7 +66,7 @@ const OnboardingStep3Screen: React.FC = () => {
   return (
     <BackgroundImage>
       <View style={styles.container}>
-        <Animated.View 
+        <Animated.View
           style={[
             styles.logoContainer,
             {
@@ -75,11 +75,11 @@ const OnboardingStep3Screen: React.FC = () => {
             }
           ]}
         >
-                     <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 300, height: 300}} />
+                     <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 200, height: 200}} />
 
         </Animated.View>
-        
-        <Animated.View 
+
+        <Animated.View
           style={[
             styles.instructionPanel,
             {
@@ -98,8 +98,8 @@ const OnboardingStep3Screen: React.FC = () => {
             • Level 5: 32 points
           </Text>
         </Animated.View>
-        
-        <Animated.View 
+
+        <Animated.View
           style={[
             styles.buttonContainer,
             {
@@ -111,7 +111,7 @@ const OnboardingStep3Screen: React.FC = () => {
           <TouchableOpacity style={styles.backButton} onPress={handleBack}>
             <Text style={styles.buttonText}>Back</Text>
           </TouchableOpacity>
-          
+
           <TouchableOpacity style={styles.startButton} onPress={handleStart}>
             <Text style={styles.buttonText}>Start Game</Text>
           </TouchableOpacity>

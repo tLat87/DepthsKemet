@@ -9,7 +9,7 @@ const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 const OnboardingStep1Screen: React.FC = () => {
   const navigation = useAppNavigation();
   const { vibrateShort } = useVibration();
-  
+
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(50)).current;
   const logoScale = useRef(new Animated.Value(0.8)).current;
@@ -61,7 +61,7 @@ const OnboardingStep1Screen: React.FC = () => {
   return (
     <BackgroundImage>
       <View style={styles.container}>
-        <Animated.View 
+        <Animated.View
           style={[
             styles.logoContainer,
             {
@@ -70,11 +70,11 @@ const OnboardingStep1Screen: React.FC = () => {
             }
           ]}
         >
-                     <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 300, height: 300}} />
+                     <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 200, height: 200}} />
 
         </Animated.View>
-        
-        <Animated.View 
+
+        <Animated.View
           style={[
             styles.instructionPanel,
             {
@@ -88,8 +88,8 @@ const OnboardingStep1Screen: React.FC = () => {
             Merge ancient relics and descend into the secrets of lost dynasties.
           </Text>
         </Animated.View>
-        
-        <Animated.View 
+
+        <Animated.View
           style={[
             styles.buttonContainer,
             {

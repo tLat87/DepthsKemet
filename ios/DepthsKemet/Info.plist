@@ -64,11 +64,6 @@
 		<string>music</string>
 	</array>
 
-	<!-- Для react-native-vibration и react-native-sound -->
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-	</array>
 
 	<!-- Для работы с мультимедиа -->
 	<key>NSPhotoLibraryUsageDescription</key>

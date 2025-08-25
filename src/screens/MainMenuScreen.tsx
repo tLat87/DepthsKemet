@@ -76,7 +76,7 @@ const MainMenuScreen: React.FC = () => {
     <BackgroundImage>
       <View style={styles.container}>
         <Animated.View style={[styles.logoContainer, { transform: [{ scale: logoScale }] }]}>
-           <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 300, height: 300}} />
+           <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 200, height: 200}} />
         </Animated.View>
         
         <Animated.View style={[styles.scoreContainer, { opacity: scoreOpacity }]}>
