@@ -1,97 +1,126 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Depths of Kemet
 
-# Getting Started
+Древнеегипетская игра-головоломка, где игроки объединяют элементы для создания более высоких уровней и набирают очки.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Описание игры
 
-## Step 1: Start Metro
+**Depths of Kemet** - это игра в стиле "три в ряд" с древнеегипетской тематикой. Игроки нажимают на зону сброса для создания новых элементов, где одинаковые элементы автоматически объединяются в элементы более высокого уровня.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### Механика игры
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- **Сетка 6x6**: Простая сетка для размещения элементов
+- **Создание элементов**: Нажимайте на кнопку для создания новых элементов
+- **Размещение**: Нажимайте на ячейку сетки для размещения элемента
+- **Объединение**: Два одинаковых элемента автоматически объединяются в элемент следующего уровня
+- **Уровни элементов**: 5 уровней от Sand Date Drop до Pyramid Pop
+- **Система очков**: За каждый уровень получаете 2^уровень очков
+- **Условие проигрыша**: Игра заканчивается, когда сетка полностью заполняется
 
-```sh
-# Using npm
-npm start
+### Элементы и их лор
 
-# OR using Yarn
-yarn start
+1. **Sand Date Drop** (Уровень 1) - Сушеные финики пустыни
+2. **Lotus Chew** (Уровень 2) - Священные лотосы Нила
+3. **Obsidian Crunch** (Уровень 3) - Вулканическое стекло
+4. **Ankh Core** (Уровень 4) - Символ жизни и бессмертия
+5. **Pyramid Pop** (Уровень 5) - Светящаяся пирамида
+
+## Технические требования
+
+- React Native 0.80.0+
+- Node.js 18+
+- iOS Simulator или Android Emulator
+
+## Установка и запуск
+
+### 1. Установка зависимостей
+
+```bash
+npm install
 ```
 
-## Step 2: Build and run your app
+### 2. iOS (требуется macOS)
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
+cd ios
+pod install
+cd ..
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### 3. Android
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+npm run android
+```
 
-## Step 3: Modify your app
+### 4. Запуск Metro сервера
 
-Now that you have successfully run the app, let's make changes!
+```bash
+npm start
+```
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## Структура проекта
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+```
+src/
+├── components/          # React компоненты
+│   ├── BackgroundImage.tsx    # Фоновое изображение
+│   ├── AnimatedButton.tsx     # Анимированная кнопка
+│   ├── GameArea.tsx           # Игровая область
+│   ├── GameElement.tsx        # Отдельный элемент
+│   ├── GameHeader.tsx         # Заголовок игры
+│   └── GameOverModal.tsx      # Модал окончания
+├── screens/             # Экраны приложения
+│   ├── MainMenuScreen.tsx      # Главное меню
+│   ├── GameScreen.tsx          # Игровой экран
+│   ├── HowToPlayScreen.tsx     # Инструкции
+│   ├── ElementsLoreScreen.tsx  # Лор элементов
+│   └── SettingsScreen.tsx      # Настройки
+├── store/               # Redux store
+│   ├── gameSlice.ts    # Игровая логика
+│   ├── settingsSlice.ts # Настройки
+│   └── store.ts        # Конфигурация store
+├── types/               # TypeScript типы
+├── data/                # Игровые данные
+└── navigation/          # Навигация
+```
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## Особенности
 
-## Congratulations! :tada:
+- **Redux Toolkit** для управления состоянием
+- **Redux Persist** для сохранения лучшего счета
+- **React Navigation** для навигации между экранами
+- **TypeScript** для типизации
+- **Физика падения** элементов с гравитацией
+- **Автоматическое объединение** одинаковых элементов
+- **Настройки звука и вибрации**
+- **Анимированные кнопки** с эффектами нажатия
+- **PNG фоновые изображения** с египетской тематикой
+- **Плавные анимации** появления элементов
 
-You've successfully run and modified your React Native App. :partying_face:
+## Игровой процесс
 
-### Now what?
+1. **Главное меню**: Выберите "Start game" для начала
+2. **Игровой экран**: Нажимайте на кнопку "Tap to create element" для создания элементов
+3. **Размещение**: Нажимайте на любую ячейку сетки для размещения элемента
+4. **Объединение**: Наблюдайте за автоматическим объединением одинаковых элементов
+5. **Набор очков**: Получайте очки за каждое объединение
+6. **Продолжайте играть**: Старайтесь не заполнить всю сетку
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+## Настройки
 
-# Troubleshooting
+- **Звук**: Включение/выключение звуковых эффектов
+- **Вибрация**: Включение/выключение тактильной обратной связи
+- **Поделиться**: Возможность поделиться игрой
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## Анимации
 
-# Learn More
+- **Появление элементов**: Последовательная анимация появления всех элементов экрана
+- **Пульсация логотипа**: Постоянная анимация пульсации главного логотипа
+- **Анимация кнопок**: Эффекты нажатия с изменением масштаба и прозрачности
+- **Анимация drop zone**: Пульсирующая зона сброса элементов
+- **Плавные переходы**: Анимации между экранами
 
-To learn more about React Native, take a look at the following resources:
+## Лицензия
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+MIT License

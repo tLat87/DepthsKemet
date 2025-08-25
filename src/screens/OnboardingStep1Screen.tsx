@@ -1,0 +1,212 @@
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, Animated, TouchableOpacity, Dimensions, Image } from 'react-native';
+import { useAppNavigation } from '../hooks/useNavigation';
+import BackgroundImage from '../components/BackgroundImage';
+import { useVibration } from '../hooks/useVibration';
+
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+
+const OnboardingStep1Screen: React.FC = () => {
+  const navigation = useAppNavigation();
+  const { vibrateShort } = useVibration();
+  
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const slideAnim = useRef(new Animated.Value(50)).current;
+  const logoScale = useRef(new Animated.Value(0.8)).current;
+
+  useEffect(() => {
+    // Анимация появления
+    Animated.parallel([
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+      Animated.timing(slideAnim, {
+        toValue: 0,
+        duration: 800,
+        useNativeDriver: true,
+      }),
+      Animated.timing(logoScale, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+    ]).start();
+
+    // Анимация пульсации логотипа
+    const pulseAnimation = () => {
+      Animated.sequence([
+        Animated.timing(logoScale, {
+          toValue: 1.05,
+          duration: 2000,
+          useNativeDriver: true,
+        }),
+        Animated.timing(logoScale, {
+          toValue: 1,
+          duration: 2000,
+          useNativeDriver: true,
+        }),
+      ]).start(() => pulseAnimation());
+    };
+
+    setTimeout(pulseAnimation, 1000);
+  }, []);
+
+  const handleNext = () => {
+    vibrateShort();
+    navigation.navigate('OnboardingStep2');
+  };
+
+  return (
+    <BackgroundImage>
+      <View style={styles.container}>
+        <Animated.View 
+          style={[
+            styles.logoContainer,
+            {
+              opacity: fadeAnim,
+              transform: [{ scale: logoScale }]
+            }
+          ]}
+        >
+                     <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 300, height: 300}} />
+
+        </Animated.View>
+        
+        <Animated.View 
+          style={[
+            styles.instructionPanel,
+            {
+              opacity: fadeAnim,
+              transform: [{ translateY: slideAnim }]
+            }
+          ]}
+        >
+          <Text style={styles.panelTitle}>Welcome to the Depths of Kemet</Text>
+          <Text style={styles.panelText}>
+            Merge ancient relics and descend into the secrets of lost dynasties.
+          </Text>
+        </Animated.View>
+        
+        <Animated.View 
+          style={[
+            styles.buttonContainer,
+            {
+              opacity: fadeAnim,
+              transform: [{ translateY: slideAnim }]
+            }
+          ]}
+        >
+          <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
+            <Text style={styles.buttonText}>Next</Text>
+          </TouchableOpacity>
+        </Animated.View>
+      </View>
+    </BackgroundImage>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'space-between',
+    paddingVertical: 60,
+    paddingHorizontal: 20,
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginTop: 40,
+  },
+  anubisLogo: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    backgroundColor: '#654321',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    borderWidth: 3,
+    borderColor: '#D2B48C',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 16,
+  },
+  anubisSymbol: {
+    fontSize: 60,
+  },
+  gameTitle: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#FFD700',
+    textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
+    fontFamily: 'Macondo-Regular',
+  },
+  instructionPanel: {
+    backgroundColor: '#654321',
+    borderRadius: 20,
+    padding: 30,
+    marginHorizontal: 20,
+    borderWidth: 3,
+    borderColor: '#D2B48C',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+    elevation: 16,
+  },
+  panelTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FF8C00',
+    textAlign: 'center',
+    marginBottom: 20,
+    fontFamily: 'Macondo-Regular',
+  },
+  panelText: {
+    fontSize: 18,
+    color: 'white',
+    textAlign: 'center',
+    lineHeight: 26,
+    fontFamily: 'Macondo-Regular',
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    marginBottom: 40,
+  },
+  nextButton: {
+    backgroundColor: '#FF8C00',
+    paddingHorizontal: 50,
+    paddingVertical: 18,
+    borderRadius: 30,
+    borderWidth: 3,
+    borderColor: '#D2B48C',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 8,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: 'Macondo-Regular',
+  },
+});
+
+export default OnboardingStep1Screen;
