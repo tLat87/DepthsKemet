@@ -26,8 +26,7 @@ const GameHeader: React.FC<GameHeaderProps> = ({ onSettings, onHome }) => {
   return (
     <View style={styles.header}>
       <TouchableOpacity style={styles.headerButton} onPress={handleHome}>
-      <Image source={require('../assets/img/Frame61.png')}  />
-
+        <Image source={require('../assets/img/Frame61.png')} />
       </TouchableOpacity>
       
       <View style={styles.scoreContainer}>
@@ -36,8 +35,7 @@ const GameHeader: React.FC<GameHeaderProps> = ({ onSettings, onHome }) => {
       </View>
       
       <TouchableOpacity style={styles.headerButton} onPress={handleSettings}>
-      <Image source={require('../assets/img/Frame60.png')}  />
-
+        <Image source={require('../assets/img/Frame60.png')} />
       </TouchableOpacity>
     </View>
   );
@@ -51,41 +49,49 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 15,
     marginTop: 40,
-    // backgroundColor: '#654321',
+    backgroundColor: 'rgba(52, 152, 219, 0.9)',
     borderBottomWidth: 2,
-    borderBottomColor: '#8B4513',
+    borderBottomColor: '#2980B9',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 8,
   },
   headerButton: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: '#8B4513',
+    backgroundColor: '#E74C3C',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
-    borderColor: '#D2B48C',
-  },
-  headerButtonText: {
-    fontSize: 20,
+    borderColor: '#C0392B',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   scoreContainer: {
     alignItems: 'center',
   },
   scoreLabel: {
     fontSize: 12,
-    color: '#D2B48C',
+    color: '#ECF0F1',
+    marginBottom: 5,
     fontWeight: 'bold',
     fontFamily: 'Macondo-Regular',
   },
   scoreValue: {
     fontSize: 24,
-    color: '#FF4500',
     fontWeight: 'bold',
+    color: '#F39C12',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
     fontFamily: 'Macondo-Regular',
-  }
+  },
 });
 
 export default GameHeader;

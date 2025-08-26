@@ -75,7 +75,7 @@ const OnboardingStep2Screen: React.FC = () => {
             }
           ]}
         >
-                     <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 200, height: 200}} />
+          <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 200, height: 200}} />
 
         </Animated.View>
 
@@ -131,12 +131,12 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 60,
-    backgroundColor: '#654321',
+    backgroundColor: '#3498DB',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
     borderWidth: 3,
-    borderColor: '#D2B48C',
+    borderColor: '#2980B9',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   gameTitle: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#FFD700',
+    color: '#F39C12',
     textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: 2, height: 2 },
@@ -160,12 +160,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Macondo-Regular',
   },
   instructionPanel: {
-    backgroundColor: '#654321',
+    backgroundColor: '#3498DB',
     borderRadius: 20,
     padding: 30,
     marginHorizontal: 20,
     borderWidth: 3,
-    borderColor: '#D2B48C',
+    borderColor: '#2980B9',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   panelTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#FF8C00',
+    color: '#E74C3C',
     textAlign: 'center',
     marginBottom: 20,
     fontFamily: 'Macondo-Regular',
@@ -198,12 +198,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   backButton: {
-    backgroundColor: '#654321',
+    backgroundColor: '#9B59B6',
     paddingHorizontal: 40,
     paddingVertical: 18,
     borderRadius: 30,
     borderWidth: 3,
-    borderColor: '#D2B48C',
+    borderColor: '#8E44AD',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -214,12 +214,12 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   nextButton: {
-    backgroundColor: '#FF8C00',
+    backgroundColor: '#E74C3C',
     paddingHorizontal: 40,
     paddingVertical: 18,
     borderRadius: 30,
     borderWidth: 3,
-    borderColor: '#D2B48C',
+    borderColor: '#C0392B',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

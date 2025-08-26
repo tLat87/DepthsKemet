@@ -21,10 +21,10 @@ const GameArea: React.FC = () => {
   );
   const [selectedElement, setSelectedElement] = useState<GameElement | null>(null);
   const [canPlace, setCanPlace] = useState(false);
-
-  // Анимация для кнопки
+  
   const buttonScale = useRef(new Animated.Value(1)).current;
 
+  // Анимация для кнопки
   useEffect(() => {
     // Анимация пульсации кнопки
     const pulseAnimation = () => {
@@ -50,17 +50,17 @@ const GameArea: React.FC = () => {
     
     vibrateShort();
     
-    const newElement: GameElement = {
-      id: Date.now().toString(),
-      level: 1,
-      type: ElementType.SAND_DATE_DROP,
-      x: 0,
-      y: 0,
-      width: CELL_SIZE - 8,
-      height: CELL_SIZE - 8,
-      velocityY: 0,
-      isFalling: false
-    };
+          const newElement: GameElement = {
+        id: Date.now().toString(),
+        level: 1,
+        type: ElementType.SAND_DATE_DROP,
+        x: 0,
+        y: 0,
+        width: CELL_SIZE - 8,
+        height: CELL_SIZE - 8,
+        velocityY: 0,
+        isFalling: false
+      };
     
     setSelectedElement(newElement);
     setCanPlace(true);
@@ -77,23 +77,27 @@ const GameArea: React.FC = () => {
       vibrateLong(); // Длинная вибрация для объединения
       
       const newLevel = Math.min(selectedElement.level + 1, 5);
-      const newElement: GameElement = {
-        id: Date.now().toString(),
-        level: newLevel,
-        type: selectedElement.type,
-        x: colIndex * CELL_SIZE + 4,
-        y: rowIndex * CELL_SIZE + 4,
-        width: CELL_SIZE - 8,
-        height: CELL_SIZE - 8,
-        velocityY: 0,
-        isFalling: false
-      };
+              const newElement: GameElement = {
+          id: Date.now().toString(),
+          level: newLevel,
+          type: selectedElement.type,
+          x: colIndex * CELL_SIZE + 4,
+          y: rowIndex * CELL_SIZE + 4,
+          width: CELL_SIZE - 8,
+          height: CELL_SIZE - 8,
+          velocityY: 0,
+          isFalling: false
+        };
       
       newGrid[rowIndex][colIndex] = newElement;
+      setGrid(newGrid);
       
       // Добавляем очки
       const points = Math.pow(2, newLevel);
       dispatch(updateScore(score + points));
+      
+      // Проверяем game over
+      checkGameOver(newGrid);
     } else if (!cell) {
       // Просто размещаем элемент
       vibrateShort(); // Короткая вибрация для размещения
@@ -107,16 +111,17 @@ const GameArea: React.FC = () => {
       };
       
       newGrid[rowIndex][colIndex] = newElement;
+      setGrid(newGrid);
+      
+      // Проверяем game over
+      checkGameOver(newGrid);
     } else {
+      // Нельзя разместить здесь
       return;
     }
     
-    setGrid(newGrid);
     setSelectedElement(null);
     setCanPlace(false);
-    
-    // Проверяем game over
-    checkGameOver(newGrid);
   };
 
   const checkGameOver = (currentGrid: (GameElement | null)[][]) => {
@@ -140,7 +145,7 @@ const GameArea: React.FC = () => {
               top: rowIndex * CELL_SIZE,
               width: CELL_SIZE,
               height: CELL_SIZE,
-              backgroundColor: canPlace && !cell ? 'rgba(255, 215, 0, 0.3)' : 'transparent'
+              backgroundColor: canPlace && !cell ? 'rgba(52, 152, 219, 0.3)' : 'transparent'
             }
           ]}
           onPress={() => placeElement(rowIndex, colIndex)}
@@ -193,10 +198,10 @@ const styles = StyleSheet.create({
   },
   gameArea: {
     flex: 1,
-    backgroundColor: 'rgba(210, 180, 140, 0.3)',
+    backgroundColor: 'rgba(52, 152, 219, 0.1)',
     position: 'relative',
     borderWidth: 2,
-    borderColor: '#654321',
+    borderColor: '#4A90E2',
     margin: 20,
   },
   grid: {
@@ -207,27 +212,24 @@ const styles = StyleSheet.create({
   cell: {
     position: 'absolute',
     borderWidth: 1,
-    borderColor: 'rgba(101, 67, 33, 0.5)',
+    borderColor: 'rgba(74, 144, 226, 0.3)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   controls: {
     height: 160,
-    backgroundColor: 'rgba(160, 82, 45, 0.8)',
+    backgroundColor: 'rgba(155, 89, 182, 0.8)',
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
   createButton: {
-    backgroundColor: '#FF8C00',
+    backgroundColor: '#E74C3C',
     borderRadius: 25,
     borderWidth: 3,
-    borderColor: '#D2B48C',
+    borderColor: '#C0392B',
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 8,
@@ -247,13 +249,13 @@ const styles = StyleSheet.create({
   selectedInfo: {
     marginTop: 10,
     padding: 10,
-    backgroundColor: 'rgba(255, 215, 0, 0.8)',
+    backgroundColor: 'rgba(46, 204, 113, 0.8)',
     borderRadius: 15,
     borderWidth: 2,
-    borderColor: '#FFD700',
+    borderColor: '#27AE60',
   },
   selectedText: {
-    color: '#654321',
+    color: '#2C3E50',
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -262,7 +264,7 @@ const styles = StyleSheet.create({
   debugInfo: {
     marginTop: 10,
     padding: 5,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    backgroundColor: 'rgba(52, 73, 94, 0.5)',
     borderRadius: 10,
   },
   debugText: {

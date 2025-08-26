@@ -14,7 +14,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
   title, 
   onPress, 
   style, 
-  textStyle,
+  textStyle, 
   variant = 'primary' 
 }) => {
   const { vibrateShort } = useVibration();
@@ -52,28 +52,24 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
     ]).start();
   };
 
-  const handlePress = () => {
-    onPress();
-  };
-
   const buttonStyle = variant === 'primary' ? styles.primaryButton : styles.secondaryButton;
   const buttonTextStyle = variant === 'primary' ? styles.primaryText : styles.secondaryText;
 
   return (
-    <Animated.View
+    <Animated.View 
       style={[
-        styles.button,
-        buttonStyle,
-        style,
-        {
-          transform: [{ scale: scaleAnim }],
+        styles.button, 
+        buttonStyle, 
+        style, 
+        { 
+          transform: [{ scale: scaleAnim }], 
           opacity: opacityAnim,
-        },
+        }
       ]}
     >
       <TouchableOpacity
         style={styles.touchable}
-        onPress={handlePress}
+        onPress={onPress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
         activeOpacity={1}
@@ -87,32 +83,28 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
 const styles = StyleSheet.create({
   button: {
     borderRadius: 25,
-    overflow: 'hidden',
+    borderWidth: 3,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 4.65,
     elevation: 8,
-  },
-  touchable: {
-    paddingHorizontal: 40,
-    paddingVertical: 15,
     minWidth: 200,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   primaryButton: {
-    backgroundColor: '#FF8C00',
-    borderWidth: 2,
-    borderColor: '#D2B48C',
+    backgroundColor: '#E74C3C',
+    borderColor: '#C0392B',
   },
   secondaryButton: {
-    backgroundColor: '#654321',
-    borderWidth: 2,
-    borderColor: '#D2B48C',
+    backgroundColor: '#9B59B6',
+    borderColor: '#8E44AD',
+  },
+  touchable: {
+    paddingHorizontal: 30,
+    paddingVertical: 15,
+    width: '100%',
+    alignItems: 'center',
   },
   primaryText: {
     color: 'white',

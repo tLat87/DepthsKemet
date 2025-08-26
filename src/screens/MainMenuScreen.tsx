@@ -76,7 +76,7 @@ const MainMenuScreen: React.FC = () => {
     <BackgroundImage>
       <View style={styles.container}>
         <Animated.View style={[styles.logoContainer, { transform: [{ scale: logoScale }] }]}>
-           <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 200, height: 200}} />
+          <Image source={require('../assets/img/c44237fda79adcba131a0f2a3928e6eb0945e9cd.png')} style={{width: 200, height: 200}} />
         </Animated.View>
         
         <Animated.View style={[styles.scoreContainer, { opacity: scoreOpacity }]}>
@@ -119,44 +119,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 40,
   },
-  anubisLogo: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: '#654321',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-    borderWidth: 3,
-    borderColor: '#D2B48C',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    shadowOpacity: 0.44,
-    shadowRadius: 10.32,
-    elevation: 16,
-  },
-  anubisSymbol: {
-    fontSize: 60,
-  },
-  gameTitle: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#FFD700',
-    textAlign: 'center',
-    textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 4,
-    fontFamily: 'Macondo-Regular',
-  },
   scoreContainer: {
     alignItems: 'center',
   },
   scoreLabel: {
     fontSize: 18,
-    color: '#FF8C00',
+    color: '#ECF0F1',
     marginBottom: 5,
     fontWeight: 'bold',
     fontFamily: 'Macondo-Regular',
@@ -164,7 +132,7 @@ const styles = StyleSheet.create({
   scoreValue: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#FF8C00',
+    color: '#F39C12',
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
